@@ -1,10 +1,11 @@
 package controlling.modelling;
-import java.util.ArrayList;
-//import java.util.Date;
+
+
+import javafx.collections.ObservableList;
 
 public class Menu extends Submenu{
 	
-	private ArrayList <Submenu> menu_list;
+	private ObservableList <Submenu> menu_list;
 
 	public Menu() {
 		// TODO Auto-generated constructor stub
