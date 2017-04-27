@@ -1,8 +1,8 @@
 package controlling.modelling;
 
-public class Ingredient {
+public class Ingredients {
 String name; int units; 
-	public Ingredient() {
+	public Ingredients() {
 		// TODO Auto-generated constructor stub
 		
 	}
