@@ -1,0 +1,54 @@
+Pizza
+Pizza Margharita; 5; Teig, Tomatensoﬂe, K‰se  
+Pizza Salami; 5,5; Teig, Tomatensoﬂe, K‰se, Salami
+Pizza Schinken; 5,5;  Teig, Tomatensoﬂe, K‰se, Schinken
+Pizza Capricciosa; 6,5; Teig, Tomatensoﬂe, K‰se, Artischocken, Zwiebel, Schinken, Paprika
+Pizza Peperoniwurst; 6; Teig, Tomatensoﬂe, K‰se, Peperoniwurst
+Pizza Mix; 6; Teig, Tomatensoﬂe, K‰se, Schinken, Salami, Pilze
+Pizza Hawaii; 6,5; Teig, Tomatensoﬂe, K‰se, Schinken, Ananas
+Pizza Calzone; 8; Teig, Tomatensoﬂe, K‰se, Pilze, Schinken, Salami, Tomaten
+
+Pasta
+Pasta Napoli; 5; Nudeln, Tomatensoﬂe
+Pasta Bolgnese; 6; Nudeln, Hackfleisch, Tomaten
+Pasta Carbonara; 6; Nudeln, Ei, Speck, Parmesan
+Pasta Diavolo; 6; Nudeln, Tomatensoﬂe, Paprika, Champignons, Peperoni
+Pasta Arrabiata; 6; Nudeln, Tomatensoﬂe, Peperoni, Knoblauch
+
+Salate
+Tomatensalat; 3,5; Tomaten, Dressing
+Italienischer Salat; 6; Salat, Tomaten, Paprika, Ei, Zwiebel, Oliven, Dressing
+Salat Frutti di mare; 8; Salat, Garnelen, Tintenfisch, Muschel
+Rucola Salat; 7; Salat, Rucola, Tomaten, Parmesan, Dressing
+Caprese Salat; 7; Salat, Tomaten, Mozzarella, Basilikum, Dressing
+
+Vorspeisen
+Bruschetta; 3,5; Baguette, Tomaten
+Bruschetta speciale; 4; Baguette, Tomaten, Speck
+Bruschetta della casa; 4; Baguette, Tomaten, K‰se
+Carpaccio; 8,5; Gebeiztes Rinderfilet, Rucola, Parmesan 
+Tomatensuppe; 4,5; Tomaten
+Gem¸sesuppe; 5; Zwiebel, Brokkoli, Tomaten, Paprika, Knoblauch
+
+Getr‰nke
+Alkoholfrei
+Cola; 3
+Fanta; 3
+Sprite; 3
+Spezi; 3
+Wasser; 2 
+O-Saft; 3,5
+A-Saft; 3,5
+Bier
+Bier vom Fass; 3,5
+Pilz; 3
+Helles Hefeweizen; 3,5
+Dunkles Hefeweizen; 3,5
+Leichtes Hefeweizen; 3,5
+Alkoholfreies Bier; 3,5
+Wein
+Rotwein; 4
+Weiﬂwein; 4
+Spirituosen 
+Ramazotti; 3
+Grappa; 3
