@@ -1,75 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <!-- TODO Add Nodes -->
   <children>
-    <Accordion layoutX="75.0" layoutY="31.0" prefHeight="327.0" prefWidth="429.0">
-      <expandedPane>
-        <TitledPane fx:id="x2" animated="false" text="untitled">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          </content>
-          <effect>
-            <SepiaTone />
-          </effect>
-        </TitledPane>
-      </expandedPane>
-      <panes>
-        <TitledPane fx:id="x1" animated="false" text="untitled">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <MenuBar layoutX="0.0" layoutY="0.0">
-                  <menus>
-                    <Menu mnemonicParsing="false" text="File">
-                      <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                      </items>
-                    </Menu>
-                    <Menu mnemonicParsing="false" text="Edit">
-                      <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                      </items>
-                    </Menu>
-                    <Menu mnemonicParsing="false" text="Help">
-                      <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                      </items>
-                    </Menu>
-                  </menus>
-                </MenuBar>
-              </children>
-              <effect>
-                <Lighting surfaceScale="5.0">
-                  <bumpInput>
-                    <Shadow />
-                  </bumpInput>
-                  <light>
-                    <javafx.scene.effect.Light.Distant azimuth="-135.0" color="#669231" />
-                  </light>
-                </Lighting>
-              </effect>
-            </AnchorPane>
-          </content>
-          <effect>
-            <Lighting surfaceScale="5.0">
-              <bumpInput>
-                <Shadow />
-              </bumpInput>
-              <light>
-                <javafx.scene.effect.Light.Distant azimuth="-135.0" color="#00e0ff" />
-              </light>
-            </Lighting>
-          </effect>
-        </TitledPane>
-        <fx:reference source="x2" />
-      </panes>
-    </Accordion>
+    <SplitPane dividerPositions="0.5020746887966805" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.4714765100671141" layoutX="159.0" layoutY="14.0" prefHeight="194.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TreeTableView layoutX="44.0" layoutY="66.0" prefHeight="391.0" prefWidth="324.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TreeTableColumn prefWidth="75.0" text="C1" />
+                                  <TreeTableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TreeTableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+      </items>
+    </SplitPane>
   </children>
 </AnchorPane>
