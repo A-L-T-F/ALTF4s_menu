@@ -1,34 +1,37 @@
 package controlling.modelling;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Ingredient 
 {
-	String name; int units; 
-	public Ingredient() 
-	{
-		// TODO Auto-generated constructor stub	
-	}
+	private final StringProperty name; 
+	private final IntegerProperty units; 
+	
 	
 	public Ingredient(String name, int units) 
 	{
 		super();
-		this.name = name;
-		this.units = units;
+		this.name = new SimpleStringProperty(name);
+		this.units = new SimpleIntegerProperty(units);
 	}
 
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+		this.name.set(name);
 	}
 	
 	public int getUnits() {
-		return units;
+		return units.get();
 	}
 	
 	public void setUnits(int units) {
-		this.units = units;
+		this.units.set(units);;
 	}
 
 }

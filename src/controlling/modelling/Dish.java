@@ -1,18 +1,24 @@
 package controlling.modelling;
 
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 
 public class Dish {
-	private String name;
-	private float price;
-	private int size;
+	private final StringProperty name;
+	private final FloatProperty price;
+	private final IntegerProperty size;
 	private ObservableList <Ingredient> ingredients;
 	private ObservableList <String> tags;
 	public Dish(String name, float price, int size, ObservableList<Ingredient> ingredients,ObservableList <String> tags) {
 		super();
-		this.name = name;
-		this.price = price;
-		this.size = size;
+		this.name = new SimpleStringProperty(name);
+		this.price = new SimpleFloatProperty(price);
+		this.size = new SimpleIntegerProperty(size);
 		this.ingredients = ingredients;
 		this.tags=tags;
 	}
