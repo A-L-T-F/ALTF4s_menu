@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<altf4_menu>
+	<starters>
+		<name>Vorspeisen</name>
+		<bruschetta>
+			<name>Bruschetta</name>
+			<price>3,5€</price>
+			<description>
+				Sebstgemachtes Baguette mit Tomaten
+			</description>
+			<ingredients> 
+				Baguette, Tomaten
+			</ingredients>
+		</bruschetta>
+		<special>
+			<name>Bruschetta speciale</name>
+			<price>4,00€</price>
+			<description>
+				Sebstgemachtes Baguette mit Tomaten und Speck
+			</description>
+			<ingredients> 
+				Baguette, Tomaten, Speck
+			</ingredients>
+		</special>
+		<cheese>
+			<name>Bruschetta della casa</name>
+			<price>4,00€</price>
+			<description>
+				Sebstgemachtes Baguette mit Tomaten und Käse
+			</description>
+			<ingredients> 
+				Baguette, Tomaten, Käse
+			</ingredients>
+		</cheese>
+		<carpaccio>
+			<name>Carpaccio</name>
+			<price>8,50€</price>
+			<description>
+				Zartes Rinderfilet mit Rucola 
+			</description>
+			<ingredients> 
+				Gebeiztes Rinderfilet, Rucola, Parmesan
+			</ingredients>
+		</carpaccio>
+		<tomatosoup>
+			<name>Tomatensuppe</name>
+			<price>4,50€</price>
+			<description>
+				Pürierte Tomaten verfeinert mit den erlesensten Kräutern
+			</description>
+			<ingredients> 
+				Tomaten
+			</ingredients>
+		</tomatosoup>
+		<vegetablesoup>
+			<name>Gemüsesuppe</name>
+			<price>5,00€</price>
+			<description>
+				Frisches Gemüse püriert und verfeinert mit den erlesensten Kräutern
+			</description>
+			<ingredients> 
+				Zwiebel, Brokkoli, Tomaten, Paprika, Knoblauch
+			</ingredients>
+		</vegetablesoup>
+	</starters>
+	<Salad>
+		<name>Salat</name>
+		<tomato>
+			<name>Tomatensalat</name>
+			<price>3,50€</price>
+			<description>
+				Frische Tomaten mit bestem Dressing
+			</description>
+			<ingredients> 
+				Tomaten, Dressing
+			</ingredients>
+		</tomato>
+		<italian>
+			<name>Italienischer Salat</name>
+			<price>6,00€</price>
+			<description>
+				Salat, der den italienischen Flair zu Ihnen nach Deutschland bringt
+			</description>
+			<ingredients> 
+				Salat, Tomaten, Paprika, Ei, Zwiebel, Oliven, Dressing
+			</ingredients>
+		</italian>
+		<fish>
+			<name>Salat Frutti di mare</name>
+			<price>8,00€</price>
+			<description>
+				Frische Meeresfrüchte direkt aus dem Meer auf Ihren Teller
+			</description>
+			<ingredients> 
+				Salat, Garnelen, Tintenfisch, Muschel
+			</ingredients>
+		</fish>
+		<rucola>
+			<name>Rucola Salat</name>
+			<price>7,00€</price>
+			<description>
+				Frischer Rucola mit Tomaten 
+			</description>
+			<ingredients> 
+				Salat, Rucola, Tomaten, Parmesan, Dressing
+			</ingredients>
+		</rucola>
+		<caprese>
+			<name>Caprese Salat</name>
+			<price>7,00€</price>
+			<description>
+				Salat mit Tomaten und Mozzarella verfeinert 
+			</description>
+			<ingredients> 
+				Salat, Tomaten, Mozzarella, Basilikum, Dressing
+			</ingredients>
+		</caprese>		
+	</Salad>
+	<pizza>
+		<name>Pizza</name>
+		<margherita>
+			<name>Margharita</name>
+			<price>5,00€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse und Basilikum
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse
+			</ingredients>
+		</margherita>
+		<salami>
+			<name>Salami</name>
+			<price>5,50€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse und Salami 
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Salami
+			</ingredients>
+		</salami>
+		<prosciutto>
+			<name>Schinken</name>
+			<price>5,50€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse und Schinken 
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Schinken
+			</ingredients>
+		</prosciutto>
+		<capricciosa>
+			<name>Capricciosa</name>
+			<price>6,50€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse Artischocken, Zwiebel, Schinken und Paprika
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Artischocken, Zwiebel, Schinken, Paprika
+			</ingredients>
+		</capricciosa>
+		<peperoni>
+			<name>Peperoni</name>
+			<price>6,00€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse und Peperoniwurst
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Peperoniwurst
+			</ingredients>
+		</peperoni>
+		<mix>
+			<name>Mix</name>
+			<price>6,00€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse, Schinken, Salami und Pilze
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Schinken, Salami, Pilze
+			</ingredients>
+		</mix>
+		<hawaii>
+			<name>Hawaii</name>
+			<price>6,00€</price>
+			<description>
+				Pizza mit Tomatensoße, Käse, Schinken und Ananas
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Schinken, Ananas
+			</ingredients>
+		</hawaii>
+		<calzone>
+			<name>Calzone</name>
+			<price>8,00€</price>
+			<description>
+				Zusammengeklappte Pizza mit Tomatensoße, Käse, Pilze, Schinken, Salami und Tomaten
+			</description>
+			<ingredients> 
+				Teig, Tomatensoße, Käse, Pilze, Schinken, Salami, Tomaten
+			</ingredients>
+		</calzone>
+	</pizza>
+	<pasta>
+		<name>Pasta</name>
+		<napoli>
+			<name>Spaghetti Napoli</name>
+			<price>5,00€</price>
+			<description>
+				Spaghetti mit Tomatensoße
+			</description>
+			<ingredients> 
+				Nudeln, Tomatensoße
+			</ingredients>
+		</napoli>
+		<bolgnese>
+			<name>Spaghetti Bolognese</name>
+			<price>6,00€</price>
+			<description>
+				Spaghetti mit Bolgnesesoße
+			</description>
+			<ingredients> 
+				Nudeln, Hackfleisch, Tomaten
+			</ingredients>
+		</bolgnese>
+		<carbonara>
+			<name>Spaghetti Carbonara</name>
+			<price>$7.95</price>
+			<description>
+				Spaghetti mit Carbonarasoße
+			</description>
+			<ingredients> 
+				Nudeln, Ei, Speck, Parmesan
+			</ingredients>
+		</carbonara>
+		<diavolo>
+			<name>Penne Diavolo</name>
+			<price>6,00€</price>
+			<description>
+				Penne mit teuflicher Soße (scharf)
+			</description>
+			<ingredients> 
+				Nudeln, Tomatensoße, Paprika, Champignons, Peperoni
+			</ingredients>
+		</diavolo>
+		<arrabiata>
+			<name>Penne All'Arrabiata</name>
+			<price>$7.95</price>
+			<description>
+				Traditionelles aus dem Latium angerichtetes Nudelgericht (scharf)
+			</description>
+			<ingredients> 
+				Nudeln, Tomatensoße, Peperoni, Speck, Knoblauch
+			</ingredients>
+		</arrabiata>
+	</pasta>
+	<drinks>
+		<name>Getränke</name>
+		<softdrinks>
+			<name>Alkoholfrei</name>
+			<cola>
+				<name>Cola</name>
+				<price>3,00€</price>
+			</cola>
+			<fanta>
+				<name>Fanta</name>
+				<price>3,00€</price>
+			</fanta>
+			<sprite>
+				<name>Sprite</name>
+				<price>3,00€</price>
+			</sprite>
+			<spezi>
+				<name>Spezi</name>
+				<price>3,00€</price>
+			</spezi>
+			<water>
+				<name>Wasser</name>
+				<price>2,00€</price>
+			</water>
+			<orange>
+				<name>O-Saft</name>
+				<price>3,00€</price>
+			</orange>
+			<apple>
+				<name>A-Saft</name>
+				<price>3,00€</price>
+			</apple>
+		</softdrinks>
+		<beer>
+			<name>Bier</name>
+			<barrel>
+				<name>Bier vom Fass</name>
+				<price>3,00€</price>
+			</barrel>
+			<pils>
+				<name>Pils</name>
+				<price>3,00€</price>
+			</pils>
+			<wheat>
+				<name>Helles Weizenbier</name>
+				<price>3,50€</price>
+			</wheat>
+			<dark>
+				<name>Dunkles Weizenbier</name>
+				<price>3,50€</price>
+			</dark>
+			<light>
+				<name>Leichtes Weizenbier</name>
+				<price>3,50€</price>
+			</light>
+			<free>
+				<name>Alkoholfreies Bier</name>
+				<price>3,50€</price>
+			</free>
+		</beer>
+		<wine>
+			<name>Wein</name>
+			<red>
+				<name>Rotwein</name>
+				<price>4,00€</price>
+			</red>
+			<white>
+				<name>Weißwein</name>
+				<price>4,00€</price>
+			</white>
+		</wine>
+		<shot>
+			<name>Spirituosen</name>
+			<ramazotti>
+				<name>Ramazotti</name>
+				<price>3,00€</price>
+			</ramazotti>
+			<grappa>
+				<name>Grappa</name>
+				<price>3,00€</price>
+			</grappa>
+		</shot>
+	</drinks>
+</altf4_menu>
