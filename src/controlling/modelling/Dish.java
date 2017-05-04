@@ -27,22 +27,22 @@ public class Dish {
 		return "Dish [name=" + name + ", price=" + price + ", size=" + size + ", ingredients=" + ingredients + "]";
 	}
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name.set(name);;
 	}
 	public float getPrice() {
-		return price;
+		return price.get();
 	}
 	public void setPrice(float price) {
-		this.price = price;
+		this.price.set(price);;
 	}
 	public int getSize() {
-		return size;
+		return size.get();
 	}
 	public void setSize(int size) {
-		this.size = size;
+		this.size.set(size);;
 	}
 	public ObservableList<Ingredient> getIngredients() {
 		return ingredients;
