@@ -82,19 +82,12 @@ public class MainApp extends Application {
             rootLayout = (BorderPane) loader.load();
             //paste
             TreeItem<Dish> rootNode = TableTreeController.getModel();
-            
             rootNode.setExpanded(true);
-
             // Create a TreeTableView with model
-
             TreeTableView<Dish> treeTable = new TreeTableView<>(rootNode);
-
             treeTable.setPrefWidth(400);
-
             // Add columns to the TreeTableView
-
             treeTable.getColumns().add(TableTreeController.getNameColumn());
-
             treeTable.getColumns().add(TableTreeController.getPriceColumn());
             treeTable.autosize();
             // Show the scene containing the root layout.
@@ -115,9 +108,11 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
             AnchorPane menuOverview = (AnchorPane) loader.load();
-
             // Set person overview into the center of root layout.
             rootLayout.setCenter(menuOverview);
+         // Give the controller access to the main app.
+            MenuOverviewController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

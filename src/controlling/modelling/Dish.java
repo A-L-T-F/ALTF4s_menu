@@ -26,17 +26,29 @@ public class Dish {
 	public String toString() {
 		return "Dish [name=" + name + ", price=" + price + ", size=" + size + ", ingredients=" + ingredients + "]";
 	}
+	public StringProperty nameProperty ()
+	{
+		return name;
+	}
 	public String getName() {
 		return name.get();
 	}
 	public void setName(String name) {
 		this.name.set(name);;
 	}
+	public FloatProperty priceProperty ()
+	{
+	 return price;
+	}
 	public float getPrice() {
 		return price.get();
 	}
 	public void setPrice(float price) {
 		this.price.set(price);;
+	}
+	public IntegerProperty sizeProperty()
+	{
+		return size;
 	}
 	public int getSize() {
 		return size.get();
