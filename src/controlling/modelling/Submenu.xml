@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<submenu curentDateAsString="Wed May 10 21:26:08 CEST 2017" name="Vegetarisch">
+    <current_date>2017-05-10T21:26:08.525+02:00</current_date>
+    <description>ohne fleisch</description>
+    <Dishes>
+        <Dish>
+            <ingredients name="wasser" units="200"/>
+            <ingredients name="kaffebohnen" units="30"/>
+            <name>Machiatto</name>
+            <price>2.5</price>
+            <size>200</size>
+            <tags>
+                <tag>Getränke</tag>
+            </tags>
+        </Dish>
+    </Dishes>
+</submenu>

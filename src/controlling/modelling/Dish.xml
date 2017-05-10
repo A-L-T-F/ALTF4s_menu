@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dish>
+    <ingredients>
+        <ingredient name="wasser" units="200"/>
+        <ingredient name="kaffebohnen" units="30"/>
+    </ingredients>
+    <name>Machiatto</name>
+    <price>2.5</price>
+    <size>200</size>
+    <tags>
+        <tag>Getränke</tag>
+    </tags>
+</Dish>
