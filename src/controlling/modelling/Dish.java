@@ -1,6 +1,7 @@
 package controlling.modelling;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,32 +10,36 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 @XmlRootElement (name="Dish")
 @XmlType
 public class Dish {
-	//XmlAdapter<ValueType, BoundType>
 	
+	private final StringProperty description;
 	private final StringProperty name;
 	
 	private final FloatProperty price;
 	
 	private final IntegerProperty size;
 	
-	private List <Ingredient> ingredients;
-	private List <String> tags;
+	private ObservableList <Ingredient> ingredients;
+	private ObservableList <String> tags;
 	public Dish ()
 	{
+		this.description=new SimpleStringProperty("");
 		this.name =  new SimpleStringProperty("");
 		this.price =new SimpleFloatProperty(0);
 		this.size = new SimpleIntegerProperty(0);
-		
+		this.ingredients=FXCollections.observableList(new ArrayList <Ingredient>());
+		this.tags=FXCollections.observableList(new ArrayList<String>());
 	}
-	public Dish(String name, float price, int size, ObservableList<Ingredient> ingredients,ObservableList <String> tags) {
+	public Dish(String name, float price, int size,String description, ObservableList<Ingredient> ingredients,ObservableList <String> tags) {
 		super();
 		this.name = new SimpleStringProperty(name);
 		this.price = new SimpleFloatProperty(price);
 		this.size = new SimpleIntegerProperty(size);
+		this.description=new SimpleStringProperty(description);
 		this.ingredients = ingredients;
 		this.tags=tags;
 	}
@@ -79,11 +84,25 @@ public class Dish {
 		this.size.set(size);
 	}
 	
+	public StringProperty descriptionProperty ()
+	{
+		return description;
+	}
+	@XmlElement (name="description")
+	public String getDescription() {
+		return description.get();
+	}
+	public void setDescription(String description) {
+		this.description.set(description);
+	}
+	
+	@XmlElementWrapper (name="ingredients")
+	@XmlElement (name="ingredient")
 	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+		this.ingredients = FXCollections.observableList(ingredients);
 	}
 	@XmlElementWrapper (name="tags")
 	@XmlElement (name="tag")
@@ -91,7 +110,7 @@ public class Dish {
 		return tags;
 	}
 	public void setTags(List<String> tags) {
-		this.tags = tags;
+		this.tags = FXCollections.observableList(tags);
 	}
 	
 

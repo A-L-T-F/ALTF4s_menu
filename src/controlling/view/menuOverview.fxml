@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="750.0" prefWidth="700.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlling.view.MenuOverviewController">
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlling.view.TableTreeController">
 
   <!-- TODO Add Nodes -->
   <children>
-    <SplitPane dividerPositions="0.46862483311081443" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.46862483311081443" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="1000.0" styleClass="background" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <Label layoutX="229.0" layoutY="14.0" styleClass="label-header" text="Lagerbestand" AnchorPane.topAnchor="10.0" />
+                  <Label layoutX="398.0" layoutY="14.0" styleClass="label-header" text="Lagerbestand" AnchorPane.topAnchor="14.0" />
                   <TableView layoutX="250.0" layoutY="146.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
                     <columns>
                       <TableColumn prefWidth="341.0" text="Zutaten" />
@@ -29,14 +29,16 @@
                </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <SplitPane dividerPositions="0.4057142857142857" layoutX="159.0" layoutY="14.0" prefHeight="194.0" prefWidth="598.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.4718181818181818" layoutX="159.0" layoutY="14.0" prefHeight="194.0" prefWidth="598.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="700.0">
                            <children>
-                              <TreeTableView layoutX="44.0" layoutY="66.0" prefHeight="392.0" prefWidth="325.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TreeTableView fx:id="menu_tabelle" layoutX="44.0" layoutY="66.0" prefHeight="392.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TreeTableColumn prefWidth="162.0" text="Speise" />
-                                  <TreeTableColumn prefWidth="107.0" text="Preis" />
+                                  <TreeTableColumn fx:id="column1_name" prefWidth="162.0" text="Speise" />
+                                  <TreeTableColumn fx:id="column2_tags" prefWidth="107.0" text="Preis" />
+                                    <TreeTableColumn fx:id="column3_size" prefWidth="75.0" text="Column X" />
+                                    <TreeTableColumn fx:id="column4_price" prefWidth="75.0" text="Column X" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -64,7 +66,7 @@
                                  </children>
                               </GridPane>
                               <Label layoutX="10.0" layoutY="85.0" styleClass="label-bright" text="Label" AnchorPane.leftAnchor="10.0" />
-                              <Label layoutX="348.0" layoutY="85.0" styleClass="label-bright" text="Label" AnchorPane.rightAnchor="10.0" />
+                              <Label layoutX="471.0" layoutY="85.0" styleClass="label-bright" text="Label" AnchorPane.rightAnchor="56.0" />
                            </children></AnchorPane>
                     </items>
                   </SplitPane>

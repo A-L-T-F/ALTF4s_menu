@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBException;
 
 import controlling.modelling.Dish;
 import controlling.modelling.Ingredient;
+import controlling.modelling.Menu;
 import controlling.modelling.MenuDataManager;
 import controlling.modelling.Submenu;
 import controlling.view.MenuOverviewController;
@@ -23,6 +24,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -32,50 +34,29 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
 
     @Override
-    public void start(Stage primaryStage) 
+    public void start(Stage primaryStage) throws JAXBException 
     {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("RestaurantApp");
 
         initRootLayout();
 
-        showMenuOverview();
-     // Create the RootNode
-   
-                
+        try {
+			showMenuOverview();
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       /* StackPane root = new StackPane();
+        Menu m2=MenuDataManager.loadXML_Data_Menu();
         
-                // Create the VBox
-       // VBox root = new VBox(treeTable);
+        root.getChildren().add(new TableTreeController().createTree(m2));
 
-                // Set the Style-properties of the VBox
-    
-             /*   root.setStyle("-fx-padding: 10;" +
-     
-                        "-fx-border-style: solid inside;" +
-   
-                        "-fx-border-width: 2;" +
+        Scene scene = new Scene(root, 340, 250);
 
-                        "-fx-border-insets: 5;" +
-   
-                        "-fx-border-radius: 5;" +
-   
-                        "-fx-border-color: blue;");*/
-  
-                // Create the Scene
- 
-           //     Scene scene = new Scene(root);
-                   // Add the Scene to the Stage
-   
-           //    primaryStage.setScene(scene);
- 
-                // Set the Title
-    
-          //      primaryStage.setTitle("A TreeTableView with Data");
-       
-                // Display the Stage
-      
-
-          //      primaryStage.show();
+        primaryStage.setTitle("JavaFX TreeTableView Sample");
+        primaryStage.setScene(scene);
+        primaryStage.show();*/
 
     }
 
@@ -88,17 +69,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
-            //paste
-            TreeItem<Dish> rootNode = TableTreeController.getModel();
-            rootNode.setExpanded(true);
-            // Create a TreeTableView with model
-            TreeTableView<Dish> treeTable = new TreeTableView<>(rootNode);
-            treeTable.setPrefWidth(400);
-            // Add columns to the TreeTableView
-            treeTable.getColumns().add(TableTreeController.getNameColumn());
-            treeTable.getColumns().add(TableTreeController.getPriceColumn());
-            treeTable.autosize();
-            // Show the scene containing the root layout.
+            
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -109,19 +80,40 @@ public class MainApp extends Application {
 
     /**
      * Shows the person overview inside the root layout.
+     * @throws JAXBException 
      */
-    public void showMenuOverview() {
+    public void showMenuOverview() throws JAXBException {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
             AnchorPane menuOverview = (AnchorPane) loader.load();
+           
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(menuOverview);
+           
          // Give the controller access to the main app.
-            MenuOverviewController controller = loader.getController();
+           // MenuOverviewController controller = loader.getController();
+           
+            Menu m2=MenuDataManager.loadXML_Data_Menu();
+            TableTreeController controller=loader.getController();
+          //  loader.setRoot(controller.createTree(m2));
+             menuOverview.getChildren().addAll(controller.createTree(m2));
+             
+          //paste
+        //    TreeItem<Dish> rootNode = TableTreeController.getModel();
+         //   rootNode.setExpanded(true);
+            // Create a TreeTableView with model
+         //   TreeTableView<Dish> treeTable = new TreeTableView<>(rootNode);
+        //    treeTable.setPrefWidth(400);
+            // Add columns to the TreeTableView
+        //    treeTable.getColumns().add(TableTreeController.getNameColumn());
+        //    treeTable.getColumns().add(TableTreeController.getPriceColumn());
+        //    treeTable.autosize();
+            // Show the scene containing the root layout.
+              rootLayout.setCenter(menuOverview);
             controller.setMainApp(this);
-        } catch (IOException e) {
+        } catch (IOException e) 
+        {
             e.printStackTrace();
         }
     }
@@ -139,38 +131,62 @@ public class MainApp extends Application {
     	
     	try {
     		System.out.println(System.getProperty("user.dir")+"\\src");
-    	Dish dish1 = new Dish("Machiatto",(float) 2.50,200,
+    	Dish dish1 = new Dish("Machiatto",(float) 2.50,200,"Das leckerste kaffe der welt",
 	        	FXCollections.observableList( Arrays.asList(new Ingredient("wasser",200),new Ingredient("kaffebohnen",30))),
 	        	FXCollections.observableList( Arrays.asList("Getränke")));
-    	Submenu sb1= new Submenu("Vegetarisch","ohne fleisch",new Date(),Arrays.asList(dish1));
-			MenuDataManager.saveXML_Data(sb1);
-			
+    	Submenu sb1= new Submenu("Vegetarisch","ohne fleisch",Arrays.asList(dish1));
+    	Menu m= new Menu("Unsere Speisekarte","Beste Speisen der Welt!",Arrays.asList(sb1));
+			MenuDataManager.saveXML_Data_Menu(m);
+			/*
 			Dish dish2=MenuDataManager.loadXML_Data_Dish();
 			System.out.println(dish2.getName());
 			System.out.println(dish2.getPrice()+"$");
 			
+			for(String j : dish2.getTags())
+			{
+			System.out.print(" "+j+",");
+			
+			}
 			for(Ingredient i : dish2.getIngredients())
 			{
-			System.out.print(" "+i.getName()+",");
+			System.out.print(" "+i.getName()+" ");
+			System.out.print(i.getUnits()+" units,");
 			}
+			*/
 			
-			/*
-			Submenu sub2=MenuDataManager.loadXML_Data();
+			Submenu sub3=MenuDataManager.loadXML_Data();
+			Menu m2=MenuDataManager.loadXML_Data_Menu();
+			System.out.println(m2.getName());
+			System.out.println(m2.getDescription());
+			System.out.println(m2.getCurent_date_as_string());
+			for (Submenu sub2:m2.getSubmenues())
+			{
 			System.out.println(sub2.getName());
-			System.out.println(sub2.getDescription()+"$");
+			System.out.println(sub2.getDescription());
 			for (Dish d:sub2.getDishes())
 			{
-			for(Ingredient i : d.getIngredients())
-			{
-			System.out.print(" "+i.getName()+",");
+				System.out.println(d.getName());
+				System.out.println(d.getDescription());
+				System.out.println(d.getPrice()+"$");
+				System.out.print(d.getSize()+d.getUnits().toString());
+				for(Ingredient i : d.getIngredients())
+				{
+					System.out.print(" "+i.getName()+" ");
+					System.out.print(i.getUnits()+" units,");
+				}
+				for(String j : d.getTags())
+				{
+				System.out.print(" "+j+",");
+				
+				}
 			}
-			}*/
+			}
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	
     	System.out.println("end");		
-       // launch(args);
+        launch(args);
     }
 }

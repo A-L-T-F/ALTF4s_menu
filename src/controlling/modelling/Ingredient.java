@@ -19,7 +19,7 @@ public class Ingredient
 	
 	public Ingredient ()
 	{
-		super();
+	 super();
 	 this.name=new SimpleStringProperty("");
 	 this.units=new SimpleIntegerProperty(0);
 	}
