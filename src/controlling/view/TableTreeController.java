@@ -1,17 +1,16 @@
 package controlling.view;
 
+import java.net.URL;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 import javax.xml.bind.JAXBException;
 
 import controlling.MainApp;
-import controlling.modelling.Dish;
-import controlling.modelling.Ingredient;
-import controlling.modelling.Menu;
-import controlling.modelling.MenuDataManager;
-import controlling.modelling.Dish;
-import controlling.modelling.Submenu;
+import controlling.modelling.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -20,7 +19,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.*;
-public class TableTreeController extends AnchorPane{
+public class TableTreeController {
+	
 	@FXML
 	private TreeTableView menu_tabelle;
 	@FXML
@@ -31,18 +31,21 @@ public class TableTreeController extends AnchorPane{
 	private TreeTableColumn column3_size;
 	@FXML
 	private TreeTableColumn column4_price;
+	@FXML
+	private Label caption_north;
 	
 	private MainApp mainApp;
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@FXML
-	public TreeTableView createTree(Menu menu)
+//	@SuppressWarnings({ "unchecked", "rawtypes" })
+//	@FXML
+//	public TreeTableView createTree(Menu menu)
 	{
-	
+	/*
 	 
 	  final TreeItem dummyRoot = new TreeItem(menu);
       this.menu_tabelle = new TreeTableView(dummyRoot);
       menu_tabelle.setShowRoot(true);
+      menu_tabelle.autosize();
       
       //Instantiate Columns
       
@@ -103,11 +106,11 @@ public class TableTreeController extends AnchorPane{
               return null;
           }
       });
-      this.menu_tabelle.getColumns().setAll(column1_name, column2_tags,column3_size,column4_price);
+      this.menu_tabelle.getColumns().setAll(this.column1_name, this.column2_tags,this.column3_size,this.column4_price);
       
       //Adding Data to the Tree
   
-     // List<Department> deptList = buildData();
+     
       FXCollections.observableArrayList(menu.getSubmenues()).stream().forEach((submenu) -> {
           final TreeItem submenuTreeItem = new TreeItem(submenu);
           dummyRoot.getChildren().add(submenuTreeItem);
@@ -116,8 +119,8 @@ public class TableTreeController extends AnchorPane{
           });
       });
       
-      
-      return menu_tabelle;
+     // this.menu_tabelle.setVisible(true);
+      return this.menu_tabelle;*/
 	}
 
 
@@ -151,9 +154,98 @@ public class TableTreeController extends AnchorPane{
 		return firstNameCol;
 	}
 
-	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@FXML
 	private void initialize() {
-		 
+		try {
+			
+			caption_north=new Label("Tralalala");
+			
+			Menu menu=MenuDataManager.loadXML_Data_Menu();
+			
+			final TreeItem dummyRoot = new TreeItem(menu);
+		      menu_tabelle = new TreeTableView(dummyRoot);
+		      menu_tabelle.setShowRoot(true);
+		      menu_tabelle.autosize();
+		      
+		      //Instantiate Columns
+		      
+		      this.column1_name = new TreeTableColumn("Name");
+		      this.column1_name.setPrefWidth(150);
+		      this.column1_name.setCellValueFactory(new Callback() {
+		          @Override
+		          public Object call(Object obj)
+		          {
+		              final Object dataObj = ((TreeTableColumn.CellDataFeatures) obj).getValue().getValue();
+		              if (dataObj instanceof Submenu) {
+		                  return new ReadOnlyStringWrapper(String.valueOf(((Submenu) dataObj).getName()));
+		              }
+		              else if (dataObj instanceof Dish) {
+		                  return new ReadOnlyStringWrapper(String.valueOf(((Dish) dataObj).getName()));
+		              }
+		              return null;
+		          }
+		      });
+		       this.column2_tags = new TreeTableColumn("Tags");
+		      this.column2_tags.setPrefWidth(150);
+
+		      this.column2_tags.setCellValueFactory(new Callback() {
+		          @Override
+		          public Object call(Object obj)
+		          {
+		              final Object dataObj = ((TreeTableColumn.CellDataFeatures) obj).getValue().getValue();
+		              if (dataObj instanceof Dish) {
+		                  return new ReadOnlyStringWrapper(String.join(", ",((Dish) dataObj).getTags()));
+		              }
+		              return null;
+		          }
+		      });
+		      this.column3_size = new TreeTableColumn("Size");
+		      this.column3_size.setPrefWidth(100);
+		      this.column3_size.setCellValueFactory(new Callback() {
+		          @Override
+		          public Object call(Object obj)
+		          {
+		              final Object dataObj = ((TreeTableColumn.CellDataFeatures) obj).getValue().getValue();
+		              if (dataObj instanceof Dish) {
+		                  return new ReadOnlyStringWrapper(((Dish) dataObj).getSize()+((Dish) dataObj).getUnits().toString());
+		              }
+		              return null;
+		          }
+		      });
+				
+				this.column4_price = new TreeTableColumn("Price");
+		      this.column4_price.setPrefWidth(100);
+		      this.column4_price.setCellValueFactory(new Callback() {
+		          @Override
+		          public Object call(Object obj)
+		          {
+		              final Object dataObj = ((TreeTableColumn.CellDataFeatures) obj).getValue().getValue();
+		              if (dataObj instanceof Dish) {
+		                  return new ReadOnlyStringWrapper(((Dish) dataObj).getPrice()+"EUR");
+		              }
+		              return null;
+		          }
+		      });
+		      this.menu_tabelle.getColumns().setAll(this.column1_name, this.column2_tags,this.column3_size,this.column4_price);
+		      
+		      //Adding Data to the Tree
+		  
+		     
+		      FXCollections.observableArrayList(menu.getSubmenues()).stream().forEach((submenu) -> {
+		          final TreeItem submenuTreeItem = new TreeItem(submenu);
+		          dummyRoot.getChildren().add(submenuTreeItem);
+		          FXCollections.observableArrayList(submenu.getDishes()).stream().forEach((dish) -> {
+		              submenuTreeItem.getChildren().add(new TreeItem(dish));
+		          });
+		      });
+			
+			
+			
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// this.menu_tabelle=new TreeTableView(createTree(menu));
 		// Initialize the person table with the two columns.
 		// firstNameColumn.setCellValueFactory(cellData ->
@@ -175,16 +267,16 @@ public class TableTreeController extends AnchorPane{
 	}
 
 	public TableTreeController() {
-		try {
-			Menu m2=MenuDataManager.loadXML_Data_Menu();
-			this.menu_tabelle=this.createTree(m2);
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+	//	initialize();
+		
 	//	this.menu_tabelle=new TreeTableView(this.createTree(menu));
 		// TODO Auto-generated constructor stub
 		
 	}
 
+
+	
+
+	
 }

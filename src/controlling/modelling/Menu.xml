@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<menu curentDateAsString="Sun May 14 20:17:10 CEST 2017" name="Unsere Speisekarte">
+<menu curentDateAsString="Thu May 18 12:02:38 CEST 2017" name="Unsere Speisekarte">
     <description>Beste Speisen der Welt!</description>
     <Dishes/>
-    <current_date>2017-05-14T20:17:10.935+02:00</current_date>
+    <current_date>2017-05-18T12:02:38.071+02:00</current_date>
     <submenues>
         <submenu name="Vegetarisch">
             <description>ohne fleisch</description>

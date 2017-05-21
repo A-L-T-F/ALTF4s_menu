@@ -32,6 +32,8 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private AnchorPane menuLayout;
+    private TableTreeController menu_controller;
 
     @Override
     public void start(Stage primaryStage) throws JAXBException 
@@ -47,16 +49,7 @@ public class MainApp extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       /* StackPane root = new StackPane();
-        Menu m2=MenuDataManager.loadXML_Data_Menu();
-        
-        root.getChildren().add(new TableTreeController().createTree(m2));
-
-        Scene scene = new Scene(root, 340, 250);
-
-        primaryStage.setTitle("JavaFX TreeTableView Sample");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
+      
 
     }
 
@@ -86,32 +79,21 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
+           
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
-            AnchorPane menuOverview = (AnchorPane) loader.load();
            
-            // Set person overview into the center of root layout.
+            this.menuLayout = (AnchorPane) loader.load();
+            
+            this.menu_controller = loader.getController();
+            		
+         
            
-         // Give the controller access to the main app.
-           // MenuOverviewController controller = loader.getController();
+          // menuLayout.getChildren().addAll(this.menu_controller.getMenu_tabelle());
            
-            Menu m2=MenuDataManager.loadXML_Data_Menu();
-            TableTreeController controller=loader.getController();
-          //  loader.setRoot(controller.createTree(m2));
-             menuOverview.getChildren().addAll(controller.createTree(m2));
-             
-          //paste
-        //    TreeItem<Dish> rootNode = TableTreeController.getModel();
-         //   rootNode.setExpanded(true);
-            // Create a TreeTableView with model
-         //   TreeTableView<Dish> treeTable = new TreeTableView<>(rootNode);
-        //    treeTable.setPrefWidth(400);
-            // Add columns to the TreeTableView
-        //    treeTable.getColumns().add(TableTreeController.getNameColumn());
-        //    treeTable.getColumns().add(TableTreeController.getPriceColumn());
-        //    treeTable.autosize();
-            // Show the scene containing the root layout.
-              rootLayout.setCenter(menuOverview);
-            controller.setMainApp(this);
+            
+        
+            rootLayout.setCenter(this.menuLayout);
+          this.menu_controller.setMainApp(this);
         } catch (IOException e) 
         {
             e.printStackTrace();
