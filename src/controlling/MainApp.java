@@ -19,7 +19,10 @@ import controlling.view.MenuOverviewController;
 import controlling.view.TableTreeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.layout.AnchorPane;
@@ -63,6 +66,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
             
+            
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -79,21 +83,24 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-           
+        //   loader.setRoot(menuLayout);
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
-           
-            this.menuLayout = (AnchorPane) loader.load();
-            
-            this.menu_controller = loader.getController();
+         //  loader.setController(new TableTreeController());
+             menuLayout =  loader.load();
+            rootLayout.setCenter(menuLayout);
+            this.menu_controller =(TableTreeController) loader.getController();
             		
          
-           
-          // menuLayout.getChildren().addAll(this.menu_controller.getMenu_tabelle());
+           System.out.println(menuLayout.getChildren().size() +" "+menuLayout.getChildren().get(0).getClass().toString());
+           System.out.println(((SplitPane) menuLayout.getChildren().get(0)).getItems().size());
+     
+        //   menuLayout.getChildren().addAll(this.menu_controller.getMenu_tabelle());
            
             
         
-            rootLayout.setCenter(this.menuLayout);
+          
           this.menu_controller.setMainApp(this);
+          this.menu_controller.setCaption_north(new Label("Fuck YOU!"));
         } catch (IOException e) 
         {
             e.printStackTrace();

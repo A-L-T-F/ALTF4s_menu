@@ -9,11 +9,7 @@ import javax.xml.bind.JAXBException;
 import controlling.MainApp;
 import controlling.modelling.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
@@ -34,6 +30,15 @@ public class TableTreeController {
 	@FXML
 	private Label caption_north;
 	
+	public Label getCaption_north() {
+		return caption_north;
+	}
+
+
+	public void setCaption_north(Label caption_north) {
+		this.caption_north = caption_north;
+	}
+
 	private MainApp mainApp;
 
 //	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -159,7 +164,7 @@ public class TableTreeController {
 	private void initialize() {
 		try {
 			
-			caption_north=new Label("Tralalala");
+			this.caption_north=new Label("Tralalala");
 			
 			Menu menu=MenuDataManager.loadXML_Data_Menu();
 			
