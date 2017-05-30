@@ -5,31 +5,23 @@ import javafx.collections.FXCollections;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
-
 import controlling.modelling.Dish;
 import controlling.modelling.Ingredient;
 import controlling.modelling.Menu;
 import controlling.modelling.MenuDataManager;
 import controlling.modelling.Submenu;
-import controlling.view.MenuOverviewController;
 import controlling.view.TableTreeController;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
 
 public class MainApp extends Application {
 
@@ -81,26 +73,21 @@ public class MainApp extends Application {
      */
     public void showMenuOverview() throws JAXBException {
         try {
-            // Load person overview.
+            // Load menu overview.
             FXMLLoader loader = new FXMLLoader();
-        //   loader.setRoot(menuLayout);
+  
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
-         //  loader.setController(new TableTreeController());
-             menuLayout =  loader.load();
-            rootLayout.setCenter(menuLayout);
-            this.menu_controller =(TableTreeController) loader.getController();
-            		
          
+             menuLayout =  loader.load();
+
+            this.menu_controller =(TableTreeController) loader.getController();
+   
            System.out.println(menuLayout.getChildren().size() +" "+menuLayout.getChildren().get(0).getClass().toString());
            System.out.println(((SplitPane) menuLayout.getChildren().get(0)).getItems().size());
-     
-        //   menuLayout.getChildren().addAll(this.menu_controller.getMenu_tabelle());
-           
-            
-        
-          
+
+            rootLayout.setCenter(menuLayout);
+
           this.menu_controller.setMainApp(this);
-          this.menu_controller.setCaption_north(new Label("Fuck YOU!"));
         } catch (IOException e) 
         {
             e.printStackTrace();
@@ -119,6 +106,7 @@ public class MainApp extends Application {
     {
     	
     	try {
+    		// Checking of XML writer and loader /populating XML with Data
     		System.out.println(System.getProperty("user.dir")+"\\src");
     	Dish dish1 = new Dish("Machiatto",(float) 2.50,200,"Das leckerste kaffe der welt",
 	        	FXCollections.observableList( Arrays.asList(new Ingredient("wasser",200),new Ingredient("kaffebohnen",30))),
@@ -126,24 +114,16 @@ public class MainApp extends Application {
     	Submenu sb1= new Submenu("Vegetarisch","ohne fleisch",Arrays.asList(dish1));
     	Menu m= new Menu("Unsere Speisekarte","Beste Speisen der Welt!",Arrays.asList(sb1));
 			MenuDataManager.saveXML_Data_Menu(m);
-			/*
-			Dish dish2=MenuDataManager.loadXML_Data_Dish();
-			System.out.println(dish2.getName());
-			System.out.println(dish2.getPrice()+"$");
 			
-			for(String j : dish2.getTags())
-			{
-			System.out.print(" "+j+",");
+			//Testing Ingredients XML binding
+			List <Ingredient> ingredients=Arrays.asList(
+					new Ingredient("tomatoes",200), new Ingredient ("wasser",1000),new Ingredient("potatoes",200),
+					new Ingredient ("Milch",50)
+					);
+			new MenuDataManager().saveXML_Data_Ingredients(ingredients);
 			
-			}
-			for(Ingredient i : dish2.getIngredients())
-			{
-			System.out.print(" "+i.getName()+" ");
-			System.out.print(i.getUnits()+" units,");
-			}
-			*/
 			
-			Submenu sub3=MenuDataManager.loadXML_Data();
+			Submenu sub3=MenuDataManager.loadXML_Data_Submenu();
 			Menu m2=MenuDataManager.loadXML_Data_Menu();
 			System.out.println(m2.getName());
 			System.out.println(m2.getDescription());

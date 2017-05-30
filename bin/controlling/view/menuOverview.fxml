@@ -11,34 +11,36 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1100.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlling.view.TableTreeController">
+<AnchorPane prefHeight="750.0" prefWidth="1300.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlling.view.TableTreeController">
 
   <!-- TODO Add Nodes -->
   <children>
-    <SplitPane dividerPositions="0.3871829105473965" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="1000.0" styleClass="background" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.5" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="1000.0" styleClass="background" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <Label fx:id="caption_north" layoutX="398.0" layoutY="14.0" styleClass="label-header" text="Lagerbestand" AnchorPane.topAnchor="14.0" />
-                  <TableView layoutX="250.0" layoutY="146.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+                  <Label fx:id="caption_north" layoutX="429.0" layoutY="14.0" styleClass="label-header" text="Lagerbestand" AnchorPane.topAnchor="14.0" />
+                  <TableView fx:id="ingredients_table" layoutY="74.0" prefHeight="296.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
                     <columns>
-                      <TableColumn prefWidth="341.0" text="Zutaten" />
-                      <TableColumn prefWidth="338.0" text="Bestand" />
+                      <TableColumn fx:id="table_column1_name" prefWidth="200.0" text="Zutaten" />
+                      <TableColumn fx:id="table_column2_amount" minWidth="20.0" prefWidth="200.0" text="Bestand" />
+                        <TableColumn fx:id="table_column3_comment" prefWidth="850.0" text="Zutaten" />
                     </columns>
                   </TableView>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <SplitPane dividerPositions="0.4718181818181818" layoutX="159.0" layoutY="14.0" prefHeight="194.0" prefWidth="598.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.5290909090909091" layoutX="159.0" layoutY="-1.0" prefHeight="370.0" prefWidth="1100.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="700.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="551.0">
                            <children>
-                              <TreeTableView fx:id="menu_tabelle" layoutX="44.0" layoutY="66.0" prefHeight="159.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TreeTableView fx:id="menu_table" layoutX="44.0" layoutY="66.0" prefHeight="159.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TreeTableColumn fx:id="column1_name" prefWidth="162.0" text="Speise" />
-                                  <TreeTableColumn fx:id="column2_tags" prefWidth="107.0" text="Preis" />
-                                    <TreeTableColumn fx:id="column3_size" prefWidth="75.0" text="Column X" />
-                                    <TreeTableColumn fx:id="column4_price" prefWidth="75.0" text="Column X" />
+                                  <TreeTableColumn fx:id="column1_name" prefWidth="162.0" />
+                                  <TreeTableColumn fx:id="column2_tags" prefWidth="107.0" />
+                                    <TreeTableColumn fx:id="column3_size" prefWidth="75.0" />
+                                    <TreeTableColumn fx:id="column4_price" prefWidth="75.0" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -48,7 +50,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="14.0" styleClass="label-header" text="Details" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                              <Label layoutX="210.0" layoutY="14.0" styleClass="label-header" text="Details" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="14.0" />
                               <GridPane layoutX="10.0" layoutY="151.0" prefHeight="217.0" prefWidth="391.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="151.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="142.0" />

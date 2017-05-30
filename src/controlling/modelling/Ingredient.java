@@ -1,13 +1,15 @@
 package controlling.modelling;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
+
 
 @XmlType
 public class Ingredient 
@@ -41,7 +43,7 @@ public class Ingredient
 	public String getName() {
 		return name.get();
 	}
-	//@XmlAttribute (name="name")
+	
 	public void setName(String name) {
 		this.name.set(name);
 	}
@@ -49,7 +51,6 @@ public class Ingredient
 	public int getUnits() {
 		return units.get();
 	}
-	//@XmlAttribute (name="units")
 	public void setUnits(int units) {
 		this.units.set(units);;
 	}
