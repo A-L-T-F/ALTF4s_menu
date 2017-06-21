@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<menu curentDateAsString="Tue May 30 10:20:07 CEST 2017" name="Unsere Speisekarte">
+    <description>Beste Speisen der Welt!</description>
+    <Dishes/>
+    <current_date>2017-05-30T10:20:07.116+02:00</current_date>
+    <submenues>
+        <submenu name="Vegetarisch">
+            <description>ohne fleisch</description>
+            <Dishes>
+                <Dish>
+                    <description>Das leckerste kaffe der welt</description>
+                    <ingredients>
+                        <ingredient name="wasser" units="200"/>
+                        <ingredient name="kaffebohnen" units="30"/>
+                    </ingredients>
+                    <name>Machiatto</name>
+                    <price>2.5</price>
+                    <size>200</size>
+                    <tags>
+                        <tag>Getränke</tag>
+                    </tags>
+                </Dish>
+            </Dishes>
+        </submenu>
+    </submenues>
+</menu>

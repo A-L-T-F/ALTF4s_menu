@@ -1,30 +1,51 @@
 package controlling;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import javafx.application.Application;
+import javax.xml.bind.JAXBException;
+import controlling.modelling.Dish;
+import controlling.modelling.Ingredient;
+import controlling.modelling.Menu;
+import controlling.modelling.MenuDataManager;
+import controlling.modelling.Submenu;
+import controlling.view.TableTreeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private AnchorPane menuLayout;
+    private TableTreeController menu_controller;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws JAXBException 
+    {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("RestaurantApp");
 
         initRootLayout();
 
-        showMenuOverview();
+        try {
+			showMenuOverview();
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      
+
     }
 
     /**
@@ -36,8 +57,8 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
-
-            // Show the scene containing the root layout.
+            
+            
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -48,17 +69,27 @@ public class MainApp extends Application {
 
     /**
      * Shows the person overview inside the root layout.
+     * @throws JAXBException 
      */
-    public void showMenuOverview() {
+    public void showMenuOverview() throws JAXBException {
         try {
-            // Load person overview.
+            // Load menu overview.
             FXMLLoader loader = new FXMLLoader();
+  
             loader.setLocation(MainApp.class.getResource("view/menuOverview.fxml"));
-            AnchorPane menuOverview = (AnchorPane) loader.load();
+         
+             menuLayout =  loader.load();
 
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(menuOverview);
-        } catch (IOException e) {
+            this.menu_controller =(TableTreeController) loader.getController();
+   
+           System.out.println(menuLayout.getChildren().size() +" "+menuLayout.getChildren().get(0).getClass().toString());
+           System.out.println(((SplitPane) menuLayout.getChildren().get(0)).getItems().size());
+
+            rootLayout.setCenter(menuLayout);
+
+          this.menu_controller.setMainApp(this);
+        } catch (IOException e) 
+        {
             e.printStackTrace();
         }
     }
@@ -71,7 +102,60 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+    	
+    	try {
+    		// Checking of XML writer and loader /populating XML with Data
+    		System.out.println(System.getProperty("user.dir")+"\\src");
+    	Dish dish1 = new Dish("Machiatto",(float) 2.50,200,"Das leckerste kaffe der welt",
+	        	FXCollections.observableList( Arrays.asList(new Ingredient("wasser",200),new Ingredient("kaffebohnen",30))),
+	        	FXCollections.observableList( Arrays.asList("Getränke")));
+    	Submenu sb1= new Submenu("Vegetarisch","ohne fleisch",Arrays.asList(dish1));
+    	Menu m= new Menu("Unsere Speisekarte","Beste Speisen der Welt!",Arrays.asList(sb1));
+			MenuDataManager.saveXML_Data_Menu(m);
+			
+			//Testing Ingredients XML binding
+			List <Ingredient> ingredients=Arrays.asList(
+					new Ingredient("tomatoes",200), new Ingredient ("wasser",1000),new Ingredient("potatoes",200),
+					new Ingredient ("Milch",50)
+					);
+			new MenuDataManager().saveXML_Data_Ingredients(ingredients);
+			
+			
+			Submenu sub3=MenuDataManager.loadXML_Data_Submenu();
+			Menu m2=MenuDataManager.loadXML_Data_Menu();
+			System.out.println(m2.getName());
+			System.out.println(m2.getDescription());
+			System.out.println(m2.getCurent_date_as_string());
+			for (Submenu sub2:m2.getSubmenues())
+			{
+			System.out.println(sub2.getName());
+			System.out.println(sub2.getDescription());
+			for (Dish d:sub2.getDishes())
+			{
+				System.out.println(d.getName());
+				System.out.println(d.getDescription());
+				System.out.println(d.getPrice()+"$");
+				System.out.print(d.getSize()+d.getUnits().toString());
+				for(Ingredient i : d.getIngredients())
+				{
+					System.out.print(" "+i.getName()+" ");
+					System.out.print(i.getUnits()+" units,");
+				}
+				for(String j : d.getTags())
+				{
+				System.out.print(" "+j+",");
+				
+				}
+			}
+			}
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	System.out.println("end");		
         launch(args);
     }
 }
